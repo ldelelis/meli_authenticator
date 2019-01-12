@@ -1,0 +1,41 @@
+version: '3'
+services:
+  db:
+    image: mongo:4
+    networks:
+      - deploy_network
+    ports:
+      - "27017:27017"
+
+  nginx:
+    image: nginx:stable
+    ports:
+      - "8000:80"
+    volumes:
+      - ./conf:/etc/nginx/conf.d
+      - ./meli_auth/static:/static
+    networks:
+      - deploy_network
+    depends_on:
+      - meli_auth
+
+  meli_auth:
+    build: . 
+    volumes:
+      - .:/meli_auth
+    networks:
+      - deploy_network
+    depends_on:
+      - "db"
+    environment:
+      MELI_AUTH_CLIENT_ID: 8553869463192511
+      MELI_AUTH_CLIENT_SECRET: brVJCSEWxFIIlAcik3Jydm2aZ8fZkOpN
+      MELI_AUTH_CALLBACK_URL: "http://localhost:8000/api/v1/callback"
+      MELI_AUTH_MONGO_HOST: db
+      MELI_AUTH_MONGO_PORT: 27017
+      MELI_AUTH_MONGO_DB: meli_auth
+      MELI_AUTH_MONGO_COLLECTION: clients
+
+networks:
+  deploy_network:
+    driver: bridge
