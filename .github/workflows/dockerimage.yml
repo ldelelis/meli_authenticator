@@ -1,0 +1,19 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build, Tag, Publish Docker
+      uses: elgohr/Publish-Docker-Github-Action@2.14
+      with:
+        name:  ldelelis/meli_authenticator/auth_api
+        username: ${{ github.actor }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        registry: docker.pkg.github.com
+
