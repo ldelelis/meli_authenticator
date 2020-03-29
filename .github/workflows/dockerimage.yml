@@ -12,8 +12,7 @@ jobs:
     - name: Build, Tag, Publish Docker
       uses: elgohr/Publish-Docker-Github-Action@2.14
       with:
-        name:  ldelelis/meli_authenticator/auth_api
-        username: ${{ github.actor }}
+        name:  ldelelis/meli_authenticator
+        username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        registry: docker.pkg.github.com
 
