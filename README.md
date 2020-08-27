@@ -20,6 +20,15 @@ para garantizar la portabilidad a cualquier servidor.
 Alternativamente, los requerimientos para un deploy al
 servidor estan provistos en `requirements.txt`
 
+Desarrollo local
+----------------
+
+```bash
+export FLASK_APP=meli_auth
+export FLASK_ENV=development
+flask run
+```
+
 Configuración
 -------------
 
@@ -27,7 +36,7 @@ Configuración
 En caso de requerir una distinta, modificar la
 variable correspondiente en Dockerfile, y
 en la configuración de `nginx`.
-2. Agregar en `Dockerfile` el 
+2. Agregar en `Dockerfile` el
 CLIENT_ID y CLIENT_SECRET provistos por tu
 aplicación.
 3. Reemplazar `logo.png` en `meli_auth/static/images`
