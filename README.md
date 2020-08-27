@@ -29,6 +29,11 @@ export FLASK_ENV=development
 flask run
 ```
 
+Permisos MercadoLibre
+---------------------
+* read
+* offline-access
+
 Configuración
 -------------
 
