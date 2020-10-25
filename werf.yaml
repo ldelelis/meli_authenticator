@@ -1,0 +1,5 @@
+configVersion: 1
+project: meli-authenticator
+---
+image: meli-authenticator
+dockerfile: Dockerfile
