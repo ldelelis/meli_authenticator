@@ -1,0 +1,14 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: werf/actions/build-and-publish@master
+      env:
+        WERF_LOG_VERBOSE: "on"
+
